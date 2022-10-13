@@ -1,5 +1,10 @@
-const routes = require('express').Router();
+const routes = require("express").Router();
+const { User } = require("./app/models");
 
-// DEFINIÇÃO DE ROTAS
+User.create({
+  name: "Victor",
+  email: "victor@teste.com.br",
+  password_hash: "20032302",
+});
 
 module.exports = routes;
