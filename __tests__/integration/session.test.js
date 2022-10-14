@@ -13,14 +13,29 @@ describe("Authentication", () => {
     const user = await User.create({
       name: "John",
       email: "john@example.com",
-      password_hash: "123456",
+      password: "123123",
     });
 
     const response = await request(app).post("/sessions").send({
       email: user.email,
-      password: "123456789",
+      password: "123123",
     });
 
     expect(response.status).toBe(200);
+  });
+
+  it("should not authenticate with invalid credentials", async () => {
+    const user = await User.create({
+      name: "John",
+      email: "john@example.com",
+      password: "123123",
+    });
+
+    const response = await request(app).post("/sessions").send({
+      email: user.email,
+      password: "123456",
+    });
+
+    expect(response.status).toBe(401);
   });
 });
