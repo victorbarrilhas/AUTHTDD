@@ -7,7 +7,8 @@ const truncate = require("../utils/truncate");
 describe("Authentication", () => {
   beforeEach(async () => {
     await truncate();
-  })
+  });
+
   it("should authenticate with valid credentials", async () => {
     const user = await User.create({
       name: "John",
@@ -15,9 +16,7 @@ describe("Authentication", () => {
       password_hash: "123456",
     });
 
-    const response = await request(app)
-    .post("/sessions")
-    .send({
+    const response = await request(app).post("/sessions").send({
       email: user.email,
       password: "123456789",
     });
