@@ -27,6 +27,10 @@ yarn
 
 With the dependencies installed, run the migrations with:
 ```shell
+yarn sequelize db:create
+``` 
+and
+```shell
 yarn sequelize db:migrate
 ``` 
 
